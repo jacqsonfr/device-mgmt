@@ -9,7 +9,7 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host:'localhost',
+      host:'db',
       port: 3306,
       database: 'device_mgmt',
       user:     'root',

@@ -13,16 +13,15 @@ const categoryController = {
                     return response.json(id);                
             }
             
-        } catch (error) {
-            console.log(error.code);
-            if(error.code == 'MYSQL_CONSTRAINT'){                
+        } catch (error) {            
+            if(error.code != undefined){              
                 return response.json({'message':'Erro ao criar a Categoria'});
             }else{
                 return response.json({'message':error.message});
             }
         }
     },
-    async selectAll(request, response){
+    async selectAll(request, response){ //Done
         try {                                            
             const categories = await connection('category')
                 .select('*');
@@ -33,7 +32,23 @@ const categoryController = {
             return response.json({'message':error.message});        
         }
     },
-    async delete(request, response){
+    async selectByName(request, response){ //Done
+        try {                                      
+            const { name } = request.params;
+            if(!name){
+                throw new Error('Categoria inválida');
+            }else{
+            const categories = await connection('category')
+                .select('*')
+                .where('name','like',`%${name}%`);
+                return response.json(categories);           
+            }
+            
+        } catch (error) {
+            return response.json({'message':error.message});        
+        }
+    },
+    async delete(request, response){ //Done
         try {          
             const { id } = request.params;                                  
             const devices = await connection('device')
@@ -42,12 +57,15 @@ const categoryController = {
             console.log(devices);
 
             if (devices.length > 0){
-                return response.status(401).json({error: 'Operation not permitted.'});
+                return response.status(401).json({error: 'Operação não permitida.'});
             }
 
-            await connection('category').where('categoryId', id).delete();
-
-            return response.status(204).send();       
+            const rows = await connection('category').where('categoryId', id).delete();
+            if(rows > 0){
+                return response.status(204).send();       
+            }else{
+                return response.status(406).json({'message':"Informações incorretas"});           
+            }                 
             
         } catch (error) {
             return response.json({'message':error.message});        

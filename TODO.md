@@ -1,16 +1,16 @@
 #Project
 (X) Create separated folders to back-end | front-end | Database
 () Structure the project on Docker Compose
-() Create a new repo on the GitHub
+(X) Create a new repo on the GitHub
 () Share the Git repo link 
 () Share the URL from Cloud
 
 #Backend
-() Create backend basic structure
-() Install main dependencies
-() Create database 
-() Create Controllers
-() Create routes
+(X) Create backend basic structure
+(X) Install main dependencies
+(X) Create database 
+(X) Create Controllers
+(X) Create routes
 () 
 
 #Frontend
