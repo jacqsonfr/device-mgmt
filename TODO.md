@@ -1,6 +1,6 @@
 #Project
 (X) Create separated folders to back-end | front-end | Database
-() Structure the project on Docker Compose
+(X) Structure the project on Docker Compose
 (X) Create a new repo on the GitHub
 () Share the Git repo link 
 () Share the URL from Cloud
@@ -18,7 +18,7 @@
 (X) Install main Angular dependencies
 (x) Create main page with two options: Category Management, Device Management
 (x) Create category management (CRUD) page and list itens created
-() Create device management (CRUD) page and list itens created
+(X) Create device management (CRUD) page and list itens created
 
 
 #Database

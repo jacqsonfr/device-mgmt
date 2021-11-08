@@ -19,6 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { DeviceComponent } from './device/device.component';
 import { HomeComponent } from './home/home.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HomeComponent } from './home/home.component';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,10 +18,15 @@
       <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->        
       <div [ngSwitch]="page_index">
         <div *ngSwitchCase="0">          
-            Bem vindo ao sistema de gerenciamento de dispositivos          
+            <app-home></app-home>         
         </div>
-        <div *ngSwitchCase="1"><app-category></app-category></div>
-        <div *ngSwitchDefault>{{page_index}} tarefas</div>
+        <div *ngSwitchCase="1">
+          <app-category></app-category>
+        </div>
+        <div *ngSwitchCase="2">
+          <app-device></app-device>
+        </div>
+        <div *ngSwitchDefault>Opção Inválida</div>
     </div>
         
     </mat-sidenav-content>
