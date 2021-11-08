@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
@@ -6,15 +6,17 @@ import {MediaMatcher} from '@angular/cdk/layout';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnDestroy {    
+export class MenuComponent implements OnInit {    
   
-    // fillerNav = Array.from({length: 2}, (_, i) => `Nav Item ${i + 1}`);
+  sub_title: string = '';      
+  page_index: number = 0;
+
+  fillerNav = [
+    'Home',
+    'Category',
+    'Device'
+  ]    
     
-    fillerNav = [
-      'Category',
-      'Device'
-    ]    
-     
   
     fillerContent = Array.from(
       {length: 5},
@@ -24,20 +26,21 @@ export class MenuComponent implements OnDestroy {
          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    );
-  
-    private _mobileQueryListener: () => void;
+    );  
+    
   
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-      // this.mobileQuery = media.matchMedia('(max-width: 600px)');
-      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-      // this.mobileQuery.addListener(this._mobileQueryListener);
+      
     }
   
-    ngOnDestroy(): void {
+    ngOnInit(): void {
       // this.mobileQuery.removeListener(this._mobileQueryListener);
     }
   
-    
+    updateContent(index: number): void{
+        const menuName = this.fillerNav[index];
+        this.page_index = index;
+        this.sub_title = index != 0 ? ` -> ${menuName}` : '';        
+    }
 
 }

@@ -17,13 +17,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { DeviceComponent } from './device/device.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    CategoryComponent
+    CategoryComponent,
+    DeviceComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

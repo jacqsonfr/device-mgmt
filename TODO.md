@@ -14,15 +14,15 @@
 () 
 
 #Frontend
-() Create frontend basic structure
-() Install main Angular dependencies
-() Create main page with two options: Category Management, Device Management
-() Create category management (CRUD) page and list itens created
+(X) Create frontend basic structure
+(X) Install main Angular dependencies
+(x) Create main page with two options: Category Management, Device Management
+(x) Create category management (CRUD) page and list itens created
 () Create device management (CRUD) page and list itens created
 
 
 #Database
-() Create the database from scratch (script another procedure)
+(x) Create the database from scratch (script another procedure)
 
 #Deploy
 () Choice the Cloud to be used

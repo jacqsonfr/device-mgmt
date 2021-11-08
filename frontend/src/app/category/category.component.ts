@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 export interface CatItem {
-  id: number,
+  categoryId: number,
   name: string  
 }
 
@@ -20,34 +20,38 @@ export class CategoryComponent implements OnInit {
 constructor(private httpClient: HttpClient){}
 
 ngOnInit(): void{
-  this.httpClient.get<CatItem[]>(`${urlBase}/category`)
-  .subscribe(dados => {
-    console.log(dados);
-    this.catList = dados;
-  })
+  this.getCatList();   
 }
-
-
-  counter: number = 3
-  newCat: string = '';
 
   catList: CatItem[] =[]
 
   catForm = new FormGroup({
-    name: new FormControl('')
+    name: new FormControl('', [Validators.required, Validators.maxLength(128)])
     })
 
-
-
-  addCat(){        
-    console.log(this.catForm.value.name);
-    this.catList.push({
-      id:this.counter++,
-      name:this.catForm.value.name      
-    });
+  getCatList(): void{
+    this.httpClient.get<CatItem[]>(`${urlBase}/category`)
+    .subscribe(dados => {      
+      this.catList = dados;
+    })
   }
 
-  delCat(index: number){    
-    this.catList.splice(index,1);
+  addCat(){            
+    const newCat = this.catForm.value;
+    this.httpClient.post<number>(`${urlBase}/category`, newCat)
+    .subscribe(newCatId => {          
+      if(!isNaN(newCatId)){                
+          this.getCatList();
+      }      
+    })
+  }
+
+  delCat(categoria: CatItem){                 
+      this.httpClient.delete(`${urlBase}/category/${categoria.categoryId}`,)
+      .subscribe( () => {        
+        this.getCatList();    
+      },error =>{        
+        alert(error.error.message)
+      })     
   }
 }

@@ -2,13 +2,12 @@
     <form [formGroup]="catForm" (ngSubmit)="addCat()">
         <mat-form-field class="form-item" appearance="standard">
             <mat-label>Category Name</mat-label>
-            <input matInput #message formControlName="name" maxlength="128" placeholder="Ex. TV, Smartphone, Watch, ..." (ngModel)="newCat">
-            
+            <input matInput #message formControlName="name" maxlength="128" placeholder="Ex. TV, Smartphone, Watch, ...">            
             <mat-hint align="end">{{message.value.length}} / 128</mat-hint>
         </mat-form-field>
 
         <!-- <button mat-raised-button color="primary" (click)="addCat()">Adicionar nova Categoria</button>         -->
-        <button mat-raised-button color="primary" type="submit">Adicionar nova Categoria</button>        
+        <button [disabled]="catForm.invalid" mat-raised-button color="primary" type="submit">Adicionar nova Categoria</button>        
         
     </form>
     
@@ -18,8 +17,8 @@
                 <td>        
                     <label>{{category.name}}</label>
                 </td>
-                <td>
-                    <button (click)="delCat(i)">Deletar categoria</button>
+                <td>                    
+                    <button mat-raised-button color="primary" (click)="delCat(category)">Deletar categoria</button>
                 </td>
             </ng-container>
         </tr>
