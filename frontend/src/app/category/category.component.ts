@@ -40,7 +40,8 @@ ngOnInit(): void{
     const newCat = this.catForm.value;
     this.httpClient.post<number>(`${urlBase}/category`, newCat)
     .subscribe(newCatId => {          
-      if(!isNaN(newCatId)){                
+      if(!isNaN(newCatId)){   
+        alert(`Categoria "${newCat.name}" criada com sucesso!`)                
           this.getCatList();
       }      
     })
@@ -48,7 +49,8 @@ ngOnInit(): void{
 
   delCat(categoria: CatItem){                 
       this.httpClient.delete(`${urlBase}/category/${categoria.categoryId}`,)
-      .subscribe( () => {        
+      .subscribe( () => { 
+        alert(`Categoria "${categoria.name}" deletada com sucesso!`)       
         this.getCatList();    
       },error =>{        
         alert(error.error.message)

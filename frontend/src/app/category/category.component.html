@@ -7,11 +7,11 @@
         </mat-form-field>
 
         <!-- <button mat-raised-button color="primary" (click)="addCat()">Adicionar nova Categoria</button>         -->
-        <button [disabled]="catForm.invalid" mat-raised-button color="primary" type="submit">Adicionar nova Categoria</button>        
+        <button [disabled]="catForm.invalid" mat-raised-button color="primary" type="submit" aria-label="Adicionar Categoria">Adicionar nova Categoria</button>        
         
     </form>
     
-    <table class="cat-list">
+    <table class="cat-list" *ngIf="catList.length > 0">
         <tr *ngFor="let category of catList; let i = index">
             <ng-container>            
                 <td>        
