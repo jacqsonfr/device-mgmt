@@ -37,10 +37,11 @@ const deviceController = {
             }
         }
     },
-    async selectAll(request, response){ //Done
+    async selectAll(_request, response){ //Done
         try {                                            
             const devices = await connection('device')
-                .select('*');
+                .select('*')
+                .join('category', 'device.category_id', 'category.categoryId');
             
             return response.json(devices);           
             

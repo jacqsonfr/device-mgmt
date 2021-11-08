@@ -7,4 +7,4 @@ cd /src
 npx knex migrate:latest
 
 cd /src
-npm start
+npm run dev
