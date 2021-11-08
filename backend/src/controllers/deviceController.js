@@ -17,7 +17,7 @@ const deviceController = {
                 .select('*');                
             
                 if ( !category || category.length == 0){
-                    return response.status(400).json({error: 'Operação não permitida.'});
+                    return response.status(400).json({"message": 'Operação não permitida.'});
                 }
                 
                 const [id] = await connection('device')
@@ -53,7 +53,7 @@ const deviceController = {
             const { id = 0 } = request.params;
             
             if (isNaN(id) || id <= 0){
-                return response.status(400).json({error: 'Operação não permitida.'});
+                return response.status(400).json({"message": 'Operação não permitida.'});
             }
 
             const rows = await connection('device').where('deviceId', id).delete();

@@ -57,7 +57,7 @@ const categoryController = {
             console.log(devices);
 
             if (devices.length > 0){
-                return response.status(401).json({error: 'Operação não permitida.'});
+                return response.status(401).json({"message": 'Operação não permitida.'});
             }
 
             const rows = await connection('category').where('categoryId', id).delete();
