@@ -9,6 +9,7 @@ export interface CatItem {
 }
 
 const urlBase = 'http://localhost:3333';
+// const urlBase = 'https://murmuring-bayou-13244.herokuapp.com';
 
 @Component({
   selector: 'app-category',
