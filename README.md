@@ -1,11 +1,13 @@
 # Device Management Application
 
 ## Como usar localmente?
-Na raiz do projeto, execute o comando $ `docker-compose up` e aguarde todo o processo de instalação e configuração
+1) Renomeie o arquivo '.env.exemple' para '.env'
 
-Após concluída a instalação, acesse o CLI do container do Backend e rode o comando $ `npm run migrate` para criar a estrutura do banco de dados Mysql.
+2) Na raiz do projeto, execute o comando $ `docker-compose up` e aguarde todo o processo de instalação e configuração
 
-Assim que as migrations forem concluídas, acesse http://localhost:4200 para visualizar a aplicação frontend.
+3) Após concluída a instalação, acesse o CLI do container do Backend e rode o comando $ `npm run migrate` para criar a estrutura do banco de dados Mysql.
+
+4) Assim que as migrations forem concluídas, acesse http://localhost:4200 para visualizar a aplicação frontend.
 
 
 

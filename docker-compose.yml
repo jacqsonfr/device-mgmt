@@ -22,7 +22,8 @@ services:
     ports: 
         - 3333:3333
     volumes:
-      - ./backend/:/usr/src/api    
+      - ./backend/:/api    
+    command: npm run dev
     networks:
       - app-network 
 
