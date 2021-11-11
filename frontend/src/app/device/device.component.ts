@@ -11,8 +11,8 @@ export interface DeviceItem {
   color: string  
 }
 
-const urlBase = 'http://localhost:3333';
-// const urlBase = 'https://murmuring-bayou-13244.herokuapp.com';
+// const urlBase = 'http://localhost:3333';
+const urlBase = 'https://murmuring-bayou-13244.herokuapp.com';
 
 @Component({
   selector: 'app-device',
@@ -30,6 +30,7 @@ export class DeviceComponent implements OnInit {
 
   catList: CatItem[] =[];
   deviceList: DeviceItem[] =[];
+  loadingData: boolean = true;
 
   deviceForm = new FormGroup({
     category_id: new FormControl('', [Validators.required]),
@@ -40,15 +41,14 @@ export class DeviceComponent implements OnInit {
   getCatList(): void{
     this.httpClient.get<CatItem[]>(`${urlBase}/category`)
     .subscribe(dados => {  
-      console.log(dados);          
       this.catList = dados;
+      this.loadingData = false;
     })
   }
 
   getDeviceList(): void{
     this.httpClient.get<DeviceItem[]>(`${urlBase}/device`)
     .subscribe(dados => {    
-      console.log(dados);  
       this.deviceList = dados;
     })
   }
@@ -60,7 +60,7 @@ export class DeviceComponent implements OnInit {
     this.httpClient.post<number>(`${urlBase}/device`, newDevice)
     .subscribe(newDeviceId => {          
       if(!isNaN(newDeviceId)){ 
-        alert(`Dispositivo criado com sucesso!`)                
+        alert(`Device created successfully!`)                
         this.getCatList(); 
         this.getDeviceList(); 
       }      
@@ -68,11 +68,9 @@ export class DeviceComponent implements OnInit {
   }
 
   delDevice(device: DeviceItem){ 
-    console.log(device);
-                    
     this.httpClient.delete(`${urlBase}/device/${device.deviceId}`,)
     .subscribe( () => {   
-      alert(`Dispositivo deletado com sucesso!`)        
+      alert(`Device deleted successfully!`)        
       this.getDeviceList(); 
     },error =>{        
       alert(error.error.message)

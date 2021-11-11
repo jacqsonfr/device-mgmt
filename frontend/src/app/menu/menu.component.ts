@@ -9,6 +9,7 @@ export class MenuComponent {
   
   sub_title: string = '';      
   page_index: number = 0;
+  opened: boolean = true;
 
   fillerNav = [
     'Home',
@@ -19,7 +20,8 @@ export class MenuComponent {
     updateContent(index: number): void{
         const menuName = this.fillerNav[index];
         this.page_index = index;
-        this.sub_title = index != 0 ? ` -> ${menuName}` : '';        
+        this.sub_title = index != 0 ? ` -> ${menuName}` : '';   
+        this.opened = false;     
     }
 
 }

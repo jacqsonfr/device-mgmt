@@ -20,6 +20,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { DeviceComponent } from './device/device.component';
 import { HomeComponent } from './home/home.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

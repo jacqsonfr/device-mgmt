@@ -8,8 +8,8 @@ export interface CatItem {
   name: string  
 }
 
-const urlBase = 'http://localhost:3333';
-// const urlBase = 'https://murmuring-bayou-13244.herokuapp.com';
+// const urlBase = 'http://localhost:3333';
+const urlBase = 'https://murmuring-bayou-13244.herokuapp.com';
 
 @Component({
   selector: 'app-category',
@@ -25,6 +25,7 @@ ngOnInit(): void{
 }
 
   catList: CatItem[] =[]
+  loadingData: boolean = true;
 
   catForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(128)])
@@ -34,6 +35,7 @@ ngOnInit(): void{
     this.httpClient.get<CatItem[]>(`${urlBase}/category`)
     .subscribe(dados => {      
       this.catList = dados;
+      this.loadingData = false;
     })
   }
 
@@ -42,7 +44,7 @@ ngOnInit(): void{
     this.httpClient.post<number>(`${urlBase}/category`, newCat)
     .subscribe(newCatId => {          
       if(!isNaN(newCatId)){   
-        alert(`Categoria "${newCat.name}" criada com sucesso!`)                
+        alert(`Category "${newCat.name}" criated successfully!`)                
           this.getCatList();
       }      
     })
@@ -51,7 +53,7 @@ ngOnInit(): void{
   delCat(categoria: CatItem){                 
       this.httpClient.delete(`${urlBase}/category/${categoria.categoryId}`,)
       .subscribe( () => { 
-        alert(`Categoria "${categoria.name}" deletada com sucesso!`)       
+        alert(`Category "${categoria.name}" deleted successfully!`)       
         this.getCatList();    
       },error =>{        
         alert(error.error.message)

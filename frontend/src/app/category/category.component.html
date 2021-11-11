@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loadingData"></mat-progress-bar>
 <div class="cat-container">
     <form [formGroup]="catForm" (ngSubmit)="addCat()">
         <mat-form-field class="form-item" appearance="standard">
@@ -7,7 +8,7 @@
         </mat-form-field>
 
         <!-- <button mat-raised-button color="primary" (click)="addCat()">Adicionar nova Categoria</button>         -->
-        <button [disabled]="catForm.invalid" mat-raised-button color="primary" type="submit" aria-label="Adicionar Categoria">Adicionar nova Categoria</button>        
+        <button [disabled]="catForm.invalid" mat-raised-button color="primary" type="submit" aria-label="Adicionar Categoria">Add new Category</button>        
         
     </form>
     
@@ -18,7 +19,7 @@
                     <label>{{category.name}}</label>
                 </td>
                 <td>                    
-                    <button mat-raised-button color="primary" (click)="delCat(category)">Deletar categoria</button>
+                    <button mat-raised-button color="primary" (click)="delCat(category)">Delete category</button>
                 </td>
             </ng-container>
         </tr>
